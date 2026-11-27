@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noor — AI Engineer</title>
+<meta name="description" content="Noor, Senior AI Engineer: production ML on Google Cloud, Vertex AI pipelines, MLOps, computer vision and NLP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;800&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE  personal site of an engineer: confident, exact, quiet
+   IDEA   a production ML pipeline run graph, the thing Noor builds every day
+   PICTURE the pipeline DAG drawn large across the hero, a run token travelling ingest → monitor
+   COLOUR oxford blue band, white panels, magenta for the live path and key results
+   TYPE   Red Hat Display + Red Hat Text
+   LAYOUT name and summary across the top of the band, pipeline full width beneath; phone stacks, pipeline turns vertical */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#070f26);
+--ink:light-dark(#0f1a33,#e8ecf6);
+--soft:light-dark(#4a5672,#a7b1c8);
+--line:light-dark(#dfe4ef,#1c2a4d);
+--panel:light-dark(#f4f6fb,#0d1a3a);
+--band:#0b1f4b;
+--bandInk:#ffffff;
+--bandSoft:#b9c4e0;
+--acc:#e0115f;
+--accSoft:light-dark(#fde7ef,#3a0f24)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Red Hat Text",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Red Hat Display",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+
+nav{position:sticky;top:0;z-index:5;background:var(--band);color:var(--bandInk);padding:0 max(5vw,16px);border-bottom:1px solid #1d3570}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+.mono{font:800 20px "Red Hat Display",sans-serif;text-decoration:none;display:flex;align-items:center;gap:10px}
+.mono span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--acc);color:#fff;font-size:17px}
+.links{display:flex;gap:4px;flex-wrap:wrap}
+.links a{text-decoration:none;color:var(--bandSoft);padding:10px 12px;border-radius:8px;font-weight:500;font-size:15px}
+.links a:hover,.links a:focus-visible{color:#fff;background:#183170;outline:none}
+
+.hero{background:var(--band);color:var(--bandInk);padding-bottom:28px}
+.hero .top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800}
+.role{font:600 clamp(18px,2vw,22px) "Red Hat Display",sans-serif;color:var(--bandSoft);margin:14px 0 0}
+.role b{color:#fff}
+.intro{color:var(--bandSoft);margin:0;max-width:60ch}
+.intro strong{color:#fff;font-weight:600}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:600;border:1.5px solid #fff}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn:hover,.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.fig{position:relative;min-height:300px;margin-top:clamp(24px,4vw,48px)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.figcap{color:var(--bandSoft);font-size:14px;margin:10px 0 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:1px;background:#1d3570;border-top:1px solid #1d3570;margin-top:28px}
+.stats div{background:var(--band);padding:18px 4px 4px}
+.stats b{display:block;font:800 clamp(28px,3.4vw,40px) "Red Hat Display",sans-serif;color:#fff;white-space:nowrap}
+.stats span{color:var(--bandSoft);font-size:14px}
+
+h2{font-size:clamp(32px,4vw,46px);font-weight:700}
+.lede{color:var(--soft);max-width:62ch;margin:12px 0 0}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:28px}
+
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
+.about p{margin:0 0 14px;max-width:62ch}
+.focus{display:grid;gap:12px;align-content:start}
+.focus div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.focus h3{font-size:19px;margin-bottom:4px}
+.focus p{margin:0;color:var(--soft);font-size:15.5px}
+
+.work{background:var(--panel);border-block:1px solid var(--line)}
+.proj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.proj li{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:10px}
+.proj .k{font-size:14px;font-weight:600;color:var(--acc)}
+.proj h3{font-size:22px}
+.proj p{margin:0;color:var(--soft)}
+.proj .m{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+.proj .m b{font:800 26px "Red Hat Display",sans-serif;color:var(--ink);white-space:nowrap}
+.proj .m span{font-size:14px;color:var(--soft)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--soft)}
+
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.5vw,32px)}
+.skills h3{font-size:18px;padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:10px}
+.skills ul{list-style:none;margin:0;padding:0}
+.skills li{padding:7px 0;border-bottom:1px solid var(--line)}
+
+.chan{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.card{background:var(--band);color:#fff;border-radius:20px;padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+.card .badge{display:flex;align-items:center;gap:14px}
+.card .badge i{width:56px;height:56px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font:800 18px "Red Hat Display",sans-serif;font-style:normal;flex:none}
+.card h3{font-size:24px}
+.card .sub{color:var(--bandSoft);font-size:15px}
+.series{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.series li{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:10px;background:#132a63;font-size:15px}
+.series li span:last-child{color:var(--bandSoft);white-space:nowrap}
+
+footer{background:var(--band);color:var(--bandInk)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:end}
+footer h2{color:#fff}
+footer p{color:var(--bandSoft);margin:12px 0 0;max-width:52ch}
+.contact{display:grid;gap:10px}
+.contact a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:0 18px;border:1px solid #2a4488;border-radius:12px;text-decoration:none}
+.contact a:hover,.contact a:focus-visible{background:#132a63;outline:none;border-color:#fff}
+.contact a span:last-child{color:var(--bandSoft);font-size:14px;overflow-wrap:anywhere;text-align:right}
+.fine{border-top:1px solid #1d3570;margin-top:40px;padding-top:18px;color:var(--bandSoft);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:900px){
+.hero .top,.head,.about,.chan,footer .wrap{grid-template-columns:minmax(0,1fr)}
+.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+.proj{grid-template-columns:minmax(0,1fr)}
+.links a{padding:10px 8px;font-size:14px}
+.fig{min-height:520px}}
+@media(max-width:420px){.skills{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.run{display:none}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="mono" href="#top"><span>N</span>Noor</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#channel">Channel</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero band" id="top">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Noor</h1>
+        <p class="role"><b>Senior AI Engineer</b> · MLOps on Google Cloud</p>
+      </div>
+      <div>
+        <p class="intro">I take models from a data scientist's notebook to <strong>production on Vertex AI</strong>, then keep them healthy: pipelines, deployment, batch prediction and support. Seven years across GenAI, NLP, computer vision and cloud engineering.</p>
+        <div class="cta">
+          <a class="btn p" href="#work">See my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig" id="pipe" role="img" aria-label="Diagram of an ML pipeline: ingest, preprocess, train, evaluate, deploy, monitor, with a feedback loop from monitoring back to ingestion."><svg id="pipeSvg"></svg></div>
+    <p class="figcap">The loop I build and run: every stage automated, every model watched after release.</p>
+
+    <div class="stats">
+      <div><b>7+ yrs</b><span>AI, ML and cloud engineering</span></div>
+      <div><b>700+</b><span>skills learned by one tagging model</span></div>
+      <div><b>98%</b><span>accuracy, real-time face anti-spoofing</span></div>
+      <div><b>GCP</b><span>Vertex AI, BigQuery, pipelines</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="about">
+  <div class="wrap about">
+    <div>
+      <h2>Production ML, end to end</h2>
+      <p class="lede">I'm an MLOps engineer currently working as a Senior AI Engineer at Best Buy India.</p>
+      <p style="margin-top:18px">My day-to-day is the part of machine learning that happens after the model works: turning it into a pipeline that ingests, preprocesses, deploys and decides on its own, and supporting it once real traffic arrives.</p>
+      <p>Before MLOps I built the models themselves: document intelligence, forgery detection, face anti-spoofing, AML screening and process automation. That background makes me a better partner to data science teams, because I know what they need from a platform.</p>
+      <p>Outside work I teach system design and AI concepts on my YouTube channel, The AI &amp; Systems Lab HQ.</p>
+    </div>
+    <div class="focus">
+      <div><h3>Pipelines on Vertex AI</h3><p>Automated ingestion, preprocessing, deployment and decision steps, built for repeatable releases.</p></div>
+      <div><h3>Deployment and support</h3><p>Putting pre-trained and partner-built models into production and keeping them correct over time.</p></div>
+      <div><h3>Applied ML</h3><p>Computer vision, NLP and GenAI models, from dataset creation to evaluation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band work" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Selected work</h2>
+      <p class="lede">Production systems first, then the research-style models that came before them.</p>
+    </div>
+    <ul class="proj" id="proj"></ul>
+  </div>
+</section>
+
+<section class="band" id="skills">
+  <div class="wrap">
+    <div class="head">
+      <h2>Toolkit</h2>
+      <p class="lede">What I reach for, grouped by where it sits in the lifecycle.</p>
+    </div>
+    <div class="skills" id="sk"></div>
+  </div>
+</section>
+
+<section class="band work" id="channel">
+  <div class="wrap chan">
+    <div>
+      <h2>Teaching what I build</h2>
+      <p class="lede">The AI &amp; Systems Lab HQ is my YouTube channel for interview preparation. Short, animated, interviewer-and-candidate explainers on system design, LLMs and MLOps, each one ending on the question the next answers.</p>
+    </div>
+    <div class="card">
+      <div class="badge"><i>HQ</i><div><h3>The AI &amp; Systems Lab HQ</h3><div class="sub">Understand AI · Design systems · Crack interviews</div></div></div>
+      <ul class="series">
+        <li><span>Load balancers</span><span>Shorts series</span></li>
+        <li><span>Rate limiting</span><span>Up next</span></li>
+        <li><span>LLMs and MLOps</span><span>Planned</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="band" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Open to conversations about MLOps platforms, production ML on GCP and GenAI deployment.</p>
+    </div>
+    <div class="contact">
+      <a href="https://github.com/mohammadnoorulhasan"><span>GitHub</span><span>github.com/mohammadnoorulhasan</span></a>
+      <a href="https://www.linkedin.com/"><span>LinkedIn</span><span>Senior AI Engineer at Best Buy India</span></a>
+      <a href="https://www.youtube.com/"><span>YouTube</span><span>The AI &amp; Systems Lab HQ</span></a>
+    </div>
+  </div>
+  <div class="wrap fine"><span>© 2026 Noor</span><span>Built as a single HTML page.</span></div>
+</footer>
+
+<script>
+{
+const projects=[
+ {k:"Production · Vertex AI",t:"ML Core Portal pipeline",d:"A Vertex AI pipeline that deploys pre-trained models through the ML Core Portal, automating ingestion, preprocessing, deployment and decision-making. I also run its production support.",tags:["Vertex AI","Pipelines","GCP"]},
+ {k:"Production · Data science partnership",t:"Push notification targeting",d:"Designed Vertex AI pipelines with the data science team and deployed the model that picks users most likely to engage with mobile push notifications.",tags:["Vertex AI","Batch scoring","Deployment"]},
+ {k:"Production · Reliability",t:"Returns KWA batch prediction fix",d:"Batch prediction outputs were coming back out of order, so merged results no longer matched their inputs. Found the cause and fixed the merge so every prediction lands on the right record.",tags:["Batch prediction","Debugging","BigQuery"]},
+ {k:"NLP",t:"Course skills tagging",d:"A model that reads course descriptions and tags the skills they teach. The hard part was the label space: training one model to handle more than seven hundred skills.",m:["700+","skill labels"],tags:["NLP","Multi-label","Text classification"]},
+ {k:"Computer vision",t:"Real-time face anti-spoofing",d:"Built a live and replay video dataset, then trained several CNNs with texture analysis to tell a real face from a screen replay in real time.",m:["98%","accuracy"],tags:["CNN","Texture analysis","Dataset creation"]},
+ {k:"Computer vision",t:"Document forgery detection",d:"Combined copy-move detection, splicing detection and a deep learning model with texture analysis to flag tampered documents.",tags:["Image forensics","Deep learning","Document AI"]}
+];
+const skills=[
+ ["Cloud and platform",["Google Cloud (GCP)","Vertex AI","BigQuery","Deployment pipelines"]],
+ ["MLOps",["Pipeline orchestration","Model deployment","Batch prediction","Production support"]],
+ ["Modelling",["GenAI and LLMs","NLP","Computer vision","Deep learning"]],
+ ["Earlier domains",["Document intelligence","AML screening","Process automation","Image forensics"]]
+];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.getElementById("proj").innerHTML=projects.map(p=>`<li><span class="k">${esc(p.k)}</span><h3>${esc(p.t)}</h3>${p.m?`<div class="m"><b>${esc(p.m[0])}</b><span>${esc(p.m[1])}</span></div>`:""}<p>${esc(p.d)}</p><div class="tags">${p.tags.map(x=>`<span>${esc(x)}</span>`).join("")}</div></li>`).join("");
+document.getElementById("sk").innerHTML=skills.map(([h,l])=>`<div><h3>${esc(h)}</h3><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+
+const stages=[["Ingest","BigQuery, GCS"],["Preprocess","features"],["Train","Vertex AI"],["Evaluate","gates"],["Deploy","endpoint, batch"],["Monitor","drift, support"]];
+const box=document.getElementById("pipe"),s=document.getElementById("pipeSvg");
+const draw=()=>{
+ const W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
+ const vert=W<600,n=stages.length;let pts=[],path="",loop="";
+ const r=vert?22:Math.min(30,W/40);
+ if(!vert){
+  const m=r+40,y=H*0.42,step=(W-2*m)/(n-1);
+  pts=stages.map((_,i)=>[m+i*step,y]);
+  path=`M${pts[0][0]} ${y} H${pts[n-1][0]}`;
+  const ly=H-22;
+  loop=`M${pts[n-1][0]} ${y+r} V${ly-14} Q${pts[n-1][0]} ${ly} ${pts[n-1][0]-14} ${ly} H${pts[0][0]+14} Q${pts[0][0]} ${ly} ${pts[0][0]} ${ly-14} V${y+r}`;
+ }else{
+  const x=48,m=r+16,step=(H-2*m)/(n-1);
+  pts=stages.map((_,i)=>[x,m+i*step]);
+  path=`M${x} ${pts[0][1]} V${pts[n-1][1]}`;
+  const lx=16;
+  loop=`M${x-r} ${pts[n-1][1]} H${lx+10} Q${lx} ${pts[n-1][1]} ${lx} ${pts[n-1][1]-10} V${pts[0][1]+10} Q${lx} ${pts[0][1]} ${lx+10} ${pts[0][1]} H${x-r}`;
+ }
+ const nodes=pts.map(([x,y],i)=>{
+  const [a,b]=stages[i],hot=i===4;
+  const lab=vert?`<text x="${x+r+16}" y="${y-2}" class="t1">${a}</text><text x="${x+r+16}" y="${y+18}" class="t2">${b}</text>`
+   :`<text x="${x}" y="${y+r+28}" text-anchor="middle" class="t1">${a}</text><text x="${x}" y="${y+r+48}" text-anchor="middle" class="t2">${b}</text>`;
+  return `<g><circle cx="${x}" cy="${y+4}" r="${r}" fill="#000" opacity=".25"/><circle cx="${x}" cy="${y}" r="${r}" fill="${hot?"#e0115f":"#132a63"}" stroke="${hot?"#ff6a9d":"#3a5bb0"}" stroke-width="2"/><circle cx="${x}" cy="${y}" r="${r*0.32}" fill="#fff" opacity="${hot?1:.85}"/>${lab}</g>`;
+ }).join("");
+ const loopLab=vert?"":`<text x="${(pts[0][0]+pts[n-1][0])/2}" y="${H-28}" text-anchor="middle" class="t2">retrain on new data and monitoring signals</text>`;
+ s.innerHTML=`<style>.t1{font:700 ${vert?17:16}px 'Red Hat Display',sans-serif;fill:#fff}.t2{font:400 14px 'Red Hat Text',sans-serif;fill:#b9c4e0}text{paint-order:stroke;stroke:#0b1f4b;stroke-width:4px}</style>
+ <path d="${loop}" fill="none" stroke="#3a5bb0" stroke-width="2" stroke-dasharray="6 7"/>
+ ${loopLab}
+ <path d="${path}" fill="none" stroke="#2a4488" stroke-width="${vert?6:8}" stroke-linecap="round"/>
+ <path id="live" d="${path}" fill="none" stroke="#e0115f" stroke-width="${vert?6:8}" stroke-linecap="round" stroke-dasharray="1 9999"/>
+ ${nodes}
+ <circle class="run" r="7" fill="#fff" stroke="#e0115f" stroke-width="3"><animateMotion dur="6s" repeatCount="indefinite" path="${path}"/></circle>`;
+};
+const ro=new ResizeObserver(draw);ro.observe(box);
+}
+</script>
+</body>
+</html>
