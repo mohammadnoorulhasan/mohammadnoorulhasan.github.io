@@ -3,292 +3,410 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Noor — AI Engineer</title>
-<meta name="description" content="Noor, Senior AI Engineer: production ML on Google Cloud, Vertex AI pipelines, MLOps, computer vision and NLP.">
+<title>Noor | Senior AI Engineer</title>
+<meta name="description" content="Noor, Senior AI Engineer and MLOps specialist. Production ML on Google Cloud: Vertex AI pipelines, deployment, NLP and computer vision.">
+<meta property="og:title" content="Noor | Senior AI Engineer">
+<meta property="og:description" content="Production ML on Google Cloud: Vertex AI pipelines, deployment, NLP and computer vision.">
+<meta name="theme-color" content="#2547f5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;800&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* VOICE  personal site of an engineer: confident, exact, quiet
-   IDEA   a production ML pipeline run graph, the thing Noor builds every day
-   PICTURE the pipeline DAG drawn large across the hero, a run token travelling ingest → monitor
-   COLOUR oxford blue band, white panels, magenta for the live path and key results
-   TYPE   Red Hat Display + Red Hat Text
-   LAYOUT name and summary across the top of the band, pipeline full width beneath; phone stacks, pipeline turns vertical */
+/* VOICE   professional portfolio: confident, clean, warm
+   IDEA    an engineer's profile card plus a case-study book of shipped ML systems
+   PICTURE profile card with live pipeline status and floating stack chips
+   COLOUR  white ground, ink, cobalt #2547f5 lead, coral #ff6b4a accent, deep ink bands
+   TYPE    Space Grotesk + Inter
+   LAYOUT  hero split intro / profile card; phone stacks intro, card, stats */
 :root{color-scheme:light dark;
---bg:light-dark(#ffffff,#070f26);
---ink:light-dark(#0f1a33,#e8ecf6);
---soft:light-dark(#4a5672,#a7b1c8);
---line:light-dark(#dfe4ef,#1c2a4d);
---panel:light-dark(#f4f6fb,#0d1a3a);
---band:#0b1f4b;
---bandInk:#ffffff;
---bandSoft:#b9c4e0;
---acc:#e0115f;
---accSoft:light-dark(#fde7ef,#3a0f24)}
+--bg:light-dark(#ffffff,#0b0e17);
+--bg2:light-dark(#f5f7fc,#111522);
+--card:light-dark(#ffffff,#151a2a);
+--ink:light-dark(#0d1324,#eef1f8);
+--soft:light-dark(#525c74,#a3acc2);
+--line:light-dark(#e4e8f2,#232a3f);
+--blue:light-dark(#2547f5,#6d86ff);
+--blueBg:light-dark(#eaeefe,#1a2350);
+--coral:#ff6b4a;
+--coralBg:light-dark(#fff0ec,#3a1d17);
+--deep:#0d1324;
+--shadow:light-dark(0 1px 2px rgba(13,19,36,.06),0 1px 2px rgba(0,0,0,.4))}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Red Hat Text",system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Red Hat Display",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0;text-wrap:balance}
 a{color:inherit}
-.wrap{max-width:1240px;margin:0 auto}
-.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto}
+.band{padding:clamp(56px,7vw,104px) max(5vw,16px)}
+.alt{background:var(--bg2)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sh h2{font-size:clamp(32px,4vw,46px)}
+.sh p{color:var(--soft);max-width:46ch}
+.tag{display:inline-block;color:var(--blue);font-weight:600;font-size:15px;margin-bottom:10px}
 
-nav{position:sticky;top:0;z-index:5;background:var(--band);color:var(--bandInk);padding:0 max(5vw,16px);border-bottom:1px solid #1d3570}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
-.mono{font:800 20px "Red Hat Display",sans-serif;text-decoration:none;display:flex;align-items:center;gap:10px}
-.mono span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--acc);color:#fff;font-size:17px}
-.links{display:flex;gap:4px;flex-wrap:wrap}
-.links a{text-decoration:none;color:var(--bandSoft);padding:10px 12px;border-radius:8px;font-weight:500;font-size:15px}
-.links a:hover,.links a:focus-visible{color:#fff;background:#183170;outline:none}
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 max(5vw,16px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
+.logo{font:700 22px "Space Grotesk",sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--coral)}
+.links{display:flex;gap:2px;align-items:center}
+.links a{text-decoration:none;color:var(--soft);font-weight:500;font-size:15px;padding:10px 12px;border-radius:10px}
+.links a:hover,.links a:focus-visible{color:var(--ink);background:var(--bg2);outline:none}
+.links .hire{background:var(--ink);color:var(--bg);margin-left:8px;padding:10px 16px}
+.links .hire:hover,.links .hire:focus-visible{background:var(--blue);color:#fff}
+@media(max-width:760px){.links a:not(.hire){display:none}}
 
-.hero{background:var(--band);color:var(--bandInk);padding-bottom:28px}
-.hero .top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end}
-.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800}
-.role{font:600 clamp(18px,2vw,22px) "Red Hat Display",sans-serif;color:var(--bandSoft);margin:14px 0 0}
-.role b{color:#fff}
-.intro{color:var(--bandSoft);margin:0;max-width:60ch}
-.intro strong{color:#fff;font-weight:600}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:600;border:1.5px solid #fff}
-.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
-.btn:hover,.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.fig{position:relative;min-height:300px;margin-top:clamp(24px,4vw,48px)}
-.fig>svg{position:absolute;inset:0;width:100%;height:100%}
-.figcap{color:var(--bandSoft);font-size:14px;margin:10px 0 0}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:1px;background:#1d3570;border-top:1px solid #1d3570;margin-top:28px}
-.stats div{background:var(--band);padding:18px 4px 4px}
-.stats b{display:block;font:800 clamp(28px,3.4vw,40px) "Red Hat Display",sans-serif;color:#fff;white-space:nowrap}
-.stats span{color:var(--bandSoft);font-size:14px}
+/* hero */
+.hero{padding-top:clamp(40px,6vw,88px);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 380px at 85% 20%,color-mix(in srgb,var(--blue) 14%,transparent),transparent 70%),radial-gradient(420px 300px at 70% 85%,color-mix(in srgb,var(--coral) 12%,transparent),transparent 70%);pointer-events:none}
+.hgrid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--soft);box-shadow:var(--shadow)}
+.pill i{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px color-mix(in srgb,#22c55e 25%,transparent)}
+.hero h1{font-size:clamp(44px,6.4vw,80px);font-weight:700;margin-top:22px;line-height:1.02}
+.hero h1 span{display:block;color:var(--soft);font-weight:500;font-size:.5em;letter-spacing:-.01em;margin-top:12px}
+.lead{font-size:clamp(17px,1.5vw,19px);color:var(--soft);margin-top:22px;max-width:54ch}
+.lead strong{color:var(--ink);font-weight:600}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 24px;border-radius:14px;font-weight:600;text-decoration:none;border:1.5px solid var(--line);background:var(--card);transition:transform .15s,background .15s}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);outline:none;border-color:var(--ink)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.pri:hover,.btn.pri:focus-visible{background:color-mix(in srgb,var(--blue) 85%,#000)}
+.soc{display:flex;gap:10px;margin-top:30px;align-items:center;color:var(--soft);font-size:14px}
+.soc a{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.soc a:hover,.soc a:focus-visible{color:#fff;background:var(--ink);outline:none}
+.soc svg{width:20px;height:20px}
 
-h2{font-size:clamp(32px,4vw,46px);font-weight:700}
-.lede{color:var(--soft);max-width:62ch;margin:12px 0 0}
-.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:28px}
+/* profile card */
+.pc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 60px -30px rgba(13,19,36,.35)}
+.who{display:flex;gap:18px;align-items:center}
+.av{flex:none;width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,var(--blue),var(--coral));display:grid;place-items:center;color:#fff;font:700 38px "Space Grotesk",sans-serif}
+.who h3{font-size:24px}
+.who p{color:var(--soft);font-size:15px}
+.loc{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--soft)}
+.loc b{color:var(--ink);font-weight:600}
+.run{margin-top:20px;background:var(--deep);color:#e6e9f5;border-radius:18px;padding:18px 20px}
+.run .rh{display:flex;justify-content:space-between;font-size:13px;color:#8d97b5;margin-bottom:12px;gap:8px}
+.run .rh b{color:#4ade80;font-weight:600}
+.step{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;font-size:14.5px}
+.step i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;background:#1f8f4e;color:#fff}
+.step.now i{background:var(--coral);animation:pulse 1.6s infinite}
+.step span:last-child{color:#8d97b5;font-size:13px;white-space:nowrap}
+.bar{height:6px;border-radius:6px;background:#232b45;margin-top:12px;overflow:hidden}
+.bar div{height:100%;width:84%;background:linear-gradient(90deg,var(--blue),var(--coral));border-radius:6px}
+.chip{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;box-shadow:0 14px 30px -14px rgba(13,19,36,.35);display:flex;gap:8px;align-items:center;white-space:nowrap}
+.chip em{font-style:normal;color:var(--coral);font:700 18px "Space Grotesk",sans-serif}
+.c1{top:-18px;right:24px}
+.c2{bottom:-20px;left:-18px}
+@keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--coral) 30%,transparent)}}
 
-.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
-.about p{margin:0 0 14px;max-width:62ch}
-.focus{display:grid;gap:12px;align-content:start}
-.focus div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.focus h3{font-size:19px;margin-bottom:4px}
-.focus p{margin:0;color:var(--soft);font-size:15.5px}
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(56px,6vw,80px)}
+.stats>div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px}
+.stats b{display:block;font:700 clamp(30px,3.4vw,42px) "Space Grotesk",sans-serif;letter-spacing:-.03em;white-space:nowrap}
+.stats div:nth-child(odd) b{color:var(--blue)}
+.stats div:nth-child(even) b{color:var(--coral)}
+.stats span{color:var(--soft);font-size:14.5px}
 
-.work{background:var(--panel);border-block:1px solid var(--line)}
-.proj{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.proj li{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:10px}
-.proj .k{font-size:14px;font-weight:600;color:var(--acc)}
-.proj h3{font-size:22px}
-.proj p{margin:0;color:var(--soft)}
-.proj .m{display:flex;align-items:baseline;gap:8px;margin-top:2px}
-.proj .m b{font:800 26px "Red Hat Display",sans-serif;color:var(--ink);white-space:nowrap}
-.proj .m span{font-size:14px;color:var(--soft)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
-.tags span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--soft)}
+/* stack strip */
+.strip{border-block:1px solid var(--line);padding:22px max(5vw,16px);overflow:hidden}
+.strip .wrap{display:flex;gap:12px 36px;flex-wrap:wrap;justify-content:center;align-items:center}
+.strip span{font:600 17px "Space Grotesk",sans-serif;color:var(--soft);white-space:nowrap}
+.strip span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue);margin-right:10px;vertical-align:middle;transform:rotate(45deg)}
+.strip span:nth-child(even):before{background:var(--coral)}
 
-.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.5vw,32px)}
-.skills h3{font-size:18px;padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:10px}
-.skills ul{list-style:none;margin:0;padding:0}
-.skills li{padding:7px 0;border-bottom:1px solid var(--line)}
+/* about */
+.ab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start}
+.ab h2{font-size:clamp(32px,4vw,46px)}
+.ab .txt p{color:var(--soft);font-size:17px;margin-bottom:16px}
+.ab .txt p strong{color:var(--ink);font-weight:600}
+.svc{display:grid;gap:14px}
+.svc>div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.svc .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--blueBg);color:var(--blue)}
+.svc>div:nth-child(2) .ic{background:var(--coralBg);color:var(--coral)}
+.svc svg{width:24px;height:24px}
+.svc h3{font-size:19px;margin-bottom:4px}
+.svc p{color:var(--soft);font-size:15px}
 
-.chan{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
-.card{background:var(--band);color:#fff;border-radius:20px;padding:clamp(22px,3vw,36px);display:grid;gap:18px}
-.card .badge{display:flex;align-items:center;gap:14px}
-.card .badge i{width:56px;height:56px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font:800 18px "Red Hat Display",sans-serif;font-style:normal;flex:none}
-.card h3{font-size:24px}
-.card .sub{color:var(--bandSoft);font-size:15px}
-.series{display:grid;gap:8px;margin:0;padding:0;list-style:none}
-.series li{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:10px;background:#132a63;font-size:15px}
-.series li span:last-child{color:var(--bandSoft);white-space:nowrap}
+/* experience */
+.tl{position:relative;display:grid;gap:20px;padding-left:36px}
+.tl:before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--blue),var(--coral))}
+.job{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px}
+.job:before{content:"";position:absolute;left:-32px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--bg2);border:4px solid var(--blue)}
+.job.old:before{border-color:var(--coral)}
+.jh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.jh h3{font-size:22px}
+.jh span{font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--blueBg);color:var(--blue);white-space:nowrap}
+.job.old .jh span{background:var(--coralBg);color:var(--coral)}
+.job .co{color:var(--soft);margin-top:4px}
+.job ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.job li{position:relative;padding-left:24px;color:var(--soft)}
+.job li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--blue)}
+.job li strong{color:var(--ink);font-weight:600}
 
-footer{background:var(--band);color:var(--bandInk)}
-footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:end}
-footer h2{color:#fff}
-footer p{color:var(--bandSoft);margin:12px 0 0;max-width:52ch}
-.contact{display:grid;gap:10px}
-.contact a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:0 18px;border:1px solid #2a4488;border-radius:12px;text-decoration:none}
-.contact a:hover,.contact a:focus-visible{background:#132a63;outline:none;border-color:#fff}
-.contact a span:last-child{color:var(--bandSoft);font-size:14px;overflow-wrap:anywhere;text-align:right}
-.fine{border-top:1px solid #1d3570;margin-top:40px;padding-top:18px;color:var(--bandSoft);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* projects */
+.flt{display:flex;gap:8px;flex-wrap:wrap}
+.flt button{font:600 14.5px Inter,sans-serif;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--soft);cursor:pointer}
+.flt button:hover{color:var(--ink);border-color:var(--ink)}
+.flt button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.flt button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pj{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.pj:hover{transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(13,19,36,.35)}
+.pj[hidden]{display:none}
+.th{height:150px;position:relative;overflow:hidden}
+.th svg{position:absolute;inset:0;width:100%;height:100%}
+.th .m{position:absolute;left:18px;bottom:14px;color:#fff;font:700 30px "Space Grotesk",sans-serif;letter-spacing:-.03em;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.th .m small{display:block;font:500 13px Inter,sans-serif;letter-spacing:0;opacity:.9}
+.pb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pb .k{font-size:13.5px;font-weight:600;color:var(--coral)}
+.pb h3{font-size:21px}
+.pb p{color:var(--soft);font-size:15px}
+.tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tg span{font-size:13px;font-weight:500;padding:4px 10px;border-radius:8px;background:var(--bg2);color:var(--soft)}
 
-@media(max-width:900px){
-.hero .top,.head,.about,.chan,footer .wrap{grid-template-columns:minmax(0,1fr)}
-.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){
-.proj{grid-template-columns:minmax(0,1fr)}
-.links a{padding:10px 8px;font-size:14px}
-.fig{min-height:520px}}
-@media(max-width:420px){.skills{grid-template-columns:minmax(0,1fr)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.run{display:none}}
+/* skills */
+.sk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.sk>div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.sk h3{font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sk h3:before{content:"";width:10px;height:10px;border-radius:3px;background:var(--blue)}
+.sk>div:nth-child(even) h3:before{background:var(--coral)}
+.sk ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.sk li{font-size:14px;font-weight:500;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg2)}
+
+/* channel */
+.yt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;background:var(--deep);color:#fff;border-radius:32px;padding:clamp(28px,5vw,60px);position:relative;overflow:hidden}
+.yt:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(var(--coral),transparent 70%);opacity:.35}
+.yt h2{font-size:clamp(30px,3.6vw,42px);color:#fff}
+.yt p{color:#b5bdd4;margin-top:14px;max-width:48ch}
+.yt .tag{color:var(--coral)}
+.eps{position:relative;z-index:1;display:grid;gap:12px}
+.ep{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center;background:#161d33;border:1px solid #262f4d;border-radius:16px;padding:12px}
+.ep i{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;font-style:normal;background:linear-gradient(135deg,#2547f5,#ff6b4a)}
+.ep:nth-child(2) i{background:linear-gradient(135deg,#ff6b4a,#ffb340)}
+.ep:nth-child(3) i{background:linear-gradient(135deg,#14b8a6,#2547f5)}
+.ep i svg{width:26px;height:26px}
+.ep b{display:block;font:600 16px "Space Grotesk",sans-serif}
+.ep span{font-size:14px;color:#8d97b5}
+
+/* contact */
+.ct{text-align:center;max-width:760px;margin:0 auto}
+.ct h2{font-size:clamp(36px,5vw,60px)}
+.ct h2 span{background:linear-gradient(90deg,var(--blue),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ct p{color:var(--soft);font-size:18px;margin:18px auto 0;max-width:52ch}
+.ct .acts{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px max(5vw,16px)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--soft);font-size:14px}
+
+@media(max-width:1000px){.pg{grid-template-columns:repeat(2,minmax(0,1fr))}.sk{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.hgrid,.ab,.yt{grid-template-columns:minmax(0,1fr)}.pc{max-width:520px}}
+@media(max-width:600px){.pg,.sk{grid-template-columns:minmax(0,1fr)}.c2{left:12px}.pc{padding:22px}.job{padding:22px}.tl{padding-left:28px}.job:before{left:-24px}.tl:before{left:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
 <nav aria-label="Main">
   <div class="wrap">
-    <a class="mono" href="#top"><span>N</span>Noor</a>
+    <a class="logo" href="#top">noor<b>.</b></a>
     <div class="links">
       <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#channel">Channel</a>
-      <a href="#contact">Contact</a>
+      <a class="hire" href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<header class="hero band" id="top">
+<header class="band hero" id="top">
   <div class="wrap">
-    <div class="top">
+    <div class="hgrid">
       <div>
-        <h1>Noor</h1>
-        <p class="role"><b>Senior AI Engineer</b> · MLOps on Google Cloud</p>
-      </div>
-      <div>
-        <p class="intro">I take models from a data scientist's notebook to <strong>production on Vertex AI</strong>, then keep them healthy: pipelines, deployment, batch prediction and support. Seven years across GenAI, NLP, computer vision and cloud engineering.</p>
-        <div class="cta">
-          <a class="btn p" href="#work">See my work</a>
-          <a class="btn" href="#contact">Get in touch</a>
+        <span class="pill"><i></i>Senior AI Engineer at Best Buy India</span>
+        <h1>Hi, I'm Noor.<span>I ship machine learning to production.</span></h1>
+        <p class="lead">MLOps engineer with <strong>7+ years</strong> in AI, ML and cloud engineering. I build <strong>Vertex AI pipelines</strong> on Google Cloud that take models from notebook to production, and I keep them healthy once real traffic arrives.</p>
+        <div class="acts">
+          <a class="btn pri" href="#projects">View my work
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#contact">Let's connect</a>
         </div>
+        <div class="soc">
+          <a href="https://github.com/mohammadnoorulhasan" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+          <a href="https://www.youtube.com/" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg></a>
+          <span>Find me online</span>
+        </div>
+      </div>
+
+      <div class="pc" aria-label="Profile summary">
+        <div class="chip c1"><em>98%</em>anti-spoofing accuracy</div>
+        <div class="who">
+          <div class="av" aria-hidden="true">N</div>
+          <div><h3>Noor</h3><p>Senior AI Engineer · MLOps</p></div>
+        </div>
+        <div class="loc">
+          <span><b>Best Buy</b> India</span>
+          <span><b>GCP</b> Vertex AI · BigQuery</span>
+        </div>
+        <div class="run" aria-label="Example pipeline run">
+          <div class="rh"><span>vertex-pipeline · run #482</span><b>● healthy</b></div>
+          <div class="step"><i>✓</i><span>Ingest from BigQuery</span><span>1m 12s</span></div>
+          <div class="step"><i>✓</i><span>Preprocess features</span><span>3m 40s</span></div>
+          <div class="step"><i>✓</i><span>Batch prediction</span><span>6m 05s</span></div>
+          <div class="step now"><i>›</i><span>Deploy and monitor</span><span>running</span></div>
+          <div class="bar"><div></div></div>
+        </div>
+        <div class="chip c2"><em>700+</em>skill labels in one model</div>
       </div>
     </div>
 
-    <div class="fig" id="pipe" role="img" aria-label="Diagram of an ML pipeline: ingest, preprocess, train, evaluate, deploy, monitor, with a feedback loop from monitoring back to ingestion."><svg id="pipeSvg"></svg></div>
-    <p class="figcap">The loop I build and run: every stage automated, every model watched after release.</p>
-
     <div class="stats">
-      <div><b>7+ yrs</b><span>AI, ML and cloud engineering</span></div>
-      <div><b>700+</b><span>skills learned by one tagging model</span></div>
-      <div><b>98%</b><span>accuracy, real-time face anti-spoofing</span></div>
-      <div><b>GCP</b><span>Vertex AI, BigQuery, pipelines</span></div>
+      <div><b>7+</b><span>years in AI, ML and cloud</span></div>
+      <div><b>700+</b><span>skills tagged by one NLP model</span></div>
+      <div><b>98%</b><span>accuracy, face anti-spoofing</span></div>
+      <div><b>2+</b><span>Vertex AI pipelines in production</span></div>
     </div>
   </div>
 </header>
 
+<div class="strip" aria-label="Tech stack">
+  <div class="wrap">
+    <span>Google Cloud</span><span>Vertex AI</span><span>BigQuery</span><span>Python</span><span>MLOps</span><span>GenAI</span><span>NLP</span><span>Computer Vision</span>
+  </div>
+</div>
+
 <section class="band" id="about">
-  <div class="wrap about">
-    <div>
-      <h2>Production ML, end to end</h2>
-      <p class="lede">I'm an MLOps engineer currently working as a Senior AI Engineer at Best Buy India.</p>
-      <p style="margin-top:18px">My day-to-day is the part of machine learning that happens after the model works: turning it into a pipeline that ingests, preprocesses, deploys and decides on its own, and supporting it once real traffic arrives.</p>
-      <p>Before MLOps I built the models themselves: document intelligence, forgery detection, face anti-spoofing, AML screening and process automation. That background makes me a better partner to data science teams, because I know what they need from a platform.</p>
-      <p>Outside work I teach system design and AI concepts on my YouTube channel, The AI &amp; Systems Lab HQ.</p>
+  <div class="wrap ab">
+    <div class="txt">
+      <span class="tag">About me</span>
+      <h2>The part of ML that happens after the model works</h2>
+      <p style="margin-top:22px">I'm an <strong>MLOps engineer</strong>, currently a Senior AI Engineer at Best Buy India. My work starts where a data scientist's notebook ends: turning models into automated pipelines that ingest, preprocess, deploy and make decisions on their own, then supporting them in production.</p>
+      <p>Before MLOps I built the models myself, across <strong>document intelligence, AML screening, process automation</strong> and computer vision. That background makes me a better partner to data science teams, because I know what they need from a platform.</p>
+      <p>I also teach system design and AI on my YouTube channel, <strong>The AI &amp; Systems Lab HQ</strong>.</p>
     </div>
-    <div class="focus">
-      <div><h3>Pipelines on Vertex AI</h3><p>Automated ingestion, preprocessing, deployment and decision steps, built for repeatable releases.</p></div>
-      <div><h3>Deployment and support</h3><p>Putting pre-trained and partner-built models into production and keeping them correct over time.</p></div>
-      <div><h3>Applied ML</h3><p>Computer vision, NLP and GenAI models, from dataset creation to evaluation.</p></div>
+    <div class="svc">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6.3 8.2l4.4 7.6M17.7 8.2l-4.4 7.6"/></svg></span><div><h3>ML pipelines</h3><p>Vertex AI pipelines that automate ingestion, preprocessing, deployment and decision steps for repeatable releases.</p></div></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span><div><h3>Deployment and reliability</h3><p>Putting pre-trained and partner-built models into production, fixing batch prediction issues, and keeping outputs correct.</p></div></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 3-3 3M13 15h4"/></svg></span><div><h3>Applied AI</h3><p>GenAI, NLP and computer vision models, from building the dataset to evaluating the final model.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="band work" id="work">
+<section class="band alt" id="experience">
   <div class="wrap">
-    <div class="head">
-      <h2>Selected work</h2>
-      <p class="lede">Production systems first, then the research-style models that came before them.</p>
+    <div class="sh"><div><span class="tag">Experience</span><h2>Where I've worked</h2></div><p>Seven years moving from building models to running them at scale.</p></div>
+    <div class="tl">
+      <article class="job">
+        <div class="jh"><h3>Senior AI Engineer, MLOps</h3><span>Current</span></div>
+        <p class="co">Best Buy India</p>
+        <ul>
+          <li><strong>ML Core Portal pipeline:</strong> built a Vertex AI pipeline that deploys pre-trained models with automated ingestion, preprocessing, deployment and decision-making, and run its production support.</li>
+          <li><strong>Push notification targeting:</strong> designed Vertex AI pipelines with data science and deployed the model that finds users most likely to engage.</li>
+          <li><strong>Returns KWA:</strong> traced and fixed out-of-order batch prediction outputs so every prediction merges back onto the right record.</li>
+          <li><strong>Course skills tagging:</strong> developed an NLP model that tags skills from course descriptions across 700+ labels.</li>
+        </ul>
+      </article>
+      <article class="job old">
+        <div class="jh"><h3>AI and ML Engineering</h3><span>Earlier</span></div>
+        <p class="co">Applied AI and computer vision</p>
+        <ul>
+          <li><strong>Face anti-spoofing:</strong> built a live and replay video dataset and trained CNNs with texture analysis, reaching 98% accuracy in real time.</li>
+          <li><strong>Document forgery detection:</strong> combined copy-move detection, splicing detection and a deep learning texture model.</li>
+          <li><strong>Document intelligence, AML screening and process automation</strong> systems for production use.</li>
+        </ul>
+      </article>
     </div>
-    <ul class="proj" id="proj"></ul>
   </div>
 </section>
 
-<section class="band" id="skills">
+<section class="band" id="projects">
   <div class="wrap">
-    <div class="head">
-      <h2>Toolkit</h2>
-      <p class="lede">What I reach for, grouped by where it sits in the lifecycle.</p>
+    <div class="sh">
+      <div><span class="tag">Projects</span><h2>Featured work</h2></div>
+      <div class="flt" role="group" aria-label="Filter projects">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="mlops" aria-pressed="false">MLOps</button>
+        <button type="button" data-f="nlp" aria-pressed="false">NLP</button>
+        <button type="button" data-f="cv" aria-pressed="false">Computer vision</button>
+      </div>
     </div>
-    <div class="skills" id="sk"></div>
+    <div class="pg" id="pg"></div>
   </div>
 </section>
 
-<section class="band work" id="channel">
-  <div class="wrap chan">
-    <div>
-      <h2>Teaching what I build</h2>
-      <p class="lede">The AI &amp; Systems Lab HQ is my YouTube channel for interview preparation. Short, animated, interviewer-and-candidate explainers on system design, LLMs and MLOps, each one ending on the question the next answers.</p>
-    </div>
-    <div class="card">
-      <div class="badge"><i>HQ</i><div><h3>The AI &amp; Systems Lab HQ</h3><div class="sub">Understand AI · Design systems · Crack interviews</div></div></div>
-      <ul class="series">
-        <li><span>Load balancers</span><span>Shorts series</span></li>
-        <li><span>Rate limiting</span><span>Up next</span></li>
-        <li><span>LLMs and MLOps</span><span>Planned</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<footer class="band" id="contact">
+<section class="band alt" id="skills">
   <div class="wrap">
-    <div>
-      <h2>Let's talk</h2>
-      <p>Open to conversations about MLOps platforms, production ML on GCP and GenAI deployment.</p>
-    </div>
-    <div class="contact">
-      <a href="https://github.com/mohammadnoorulhasan"><span>GitHub</span><span>github.com/mohammadnoorulhasan</span></a>
-      <a href="https://www.linkedin.com/"><span>LinkedIn</span><span>Senior AI Engineer at Best Buy India</span></a>
-      <a href="https://www.youtube.com/"><span>YouTube</span><span>The AI &amp; Systems Lab HQ</span></a>
+    <div class="sh"><div><span class="tag">Skills</span><h2>Tools I work with</h2></div><p>Grouped by where they sit in the ML lifecycle.</p></div>
+    <div class="sk" id="sk"></div>
+  </div>
+</section>
+
+<section class="band" id="channel">
+  <div class="wrap">
+    <div class="yt">
+      <div style="position:relative;z-index:1">
+        <span class="tag">YouTube</span>
+        <h2>The AI &amp; Systems Lab HQ</h2>
+        <p>My channel for interview prep. Short, animated interviewer-and-candidate explainers on system design, LLMs and MLOps, each ending with the question the next one answers.</p>
+        <div class="acts"><a class="btn pri" href="https://www.youtube.com/" style="background:var(--coral);border-color:var(--coral)">Watch on YouTube</a></div>
+      </div>
+      <div class="eps">
+        <div class="ep"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="12" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v9M12 10l-6 7M12 10l6 7"/></svg></i><div><b>Load balancers</b><span>Shorts series · strategies, failover, L4 vs L7</span></div></div>
+        <div class="ep"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/></svg></i><div><b>Rate limiting</b><span>Up next · rate limiter design</span></div></div>
+        <div class="ep"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg></i><div><b>LLMs and MLOps</b><span>Planned · AI interview topics</span></div></div>
+      </div>
     </div>
   </div>
-  <div class="wrap fine"><span>© 2026 Noor</span><span>Built as a single HTML page.</span></div>
+</section>
+
+<section class="band alt" id="contact">
+  <div class="ct">
+    <span class="tag">Contact</span>
+    <h2>Let's build something <span>production-ready</span></h2>
+    <p>Open to conversations about MLOps platforms, production ML on Google Cloud and GenAI deployment.</p>
+    <div class="acts">
+      <a class="btn pri" href="https://www.linkedin.com/">Message me on LinkedIn</a>
+      <a class="btn" href="https://github.com/mohammadnoorulhasan">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Noor</span><span>Senior AI Engineer · MLOps on Google Cloud</span></div>
 </footer>
 
 <script>
 {
-const projects=[
- {k:"Production · Vertex AI",t:"ML Core Portal pipeline",d:"A Vertex AI pipeline that deploys pre-trained models through the ML Core Portal, automating ingestion, preprocessing, deployment and decision-making. I also run its production support.",tags:["Vertex AI","Pipelines","GCP"]},
- {k:"Production · Data science partnership",t:"Push notification targeting",d:"Designed Vertex AI pipelines with the data science team and deployed the model that picks users most likely to engage with mobile push notifications.",tags:["Vertex AI","Batch scoring","Deployment"]},
- {k:"Production · Reliability",t:"Returns KWA batch prediction fix",d:"Batch prediction outputs were coming back out of order, so merged results no longer matched their inputs. Found the cause and fixed the merge so every prediction lands on the right record.",tags:["Batch prediction","Debugging","BigQuery"]},
- {k:"NLP",t:"Course skills tagging",d:"A model that reads course descriptions and tags the skills they teach. The hard part was the label space: training one model to handle more than seven hundred skills.",m:["700+","skill labels"],tags:["NLP","Multi-label","Text classification"]},
- {k:"Computer vision",t:"Real-time face anti-spoofing",d:"Built a live and replay video dataset, then trained several CNNs with texture analysis to tell a real face from a screen replay in real time.",m:["98%","accuracy"],tags:["CNN","Texture analysis","Dataset creation"]},
- {k:"Computer vision",t:"Document forgery detection",d:"Combined copy-move detection, splicing detection and a deep learning model with texture analysis to flag tampered documents.",tags:["Image forensics","Deep learning","Document AI"]}
+const P=[
+ {f:"mlops",k:"MLOps · Production",t:"ML Core Portal pipeline",d:"Vertex AI pipeline that deploys pre-trained models with automated ingestion, preprocessing, deployment and decision-making. I run its production support.",tags:["Vertex AI","Pipelines","GCP"],g:["#2547f5","#5b7cff"],m:"Live",ms:"in production"},
+ {f:"mlops",k:"MLOps · Targeting",t:"Push notification targeting",d:"Built Vertex AI pipelines with data science and deployed the model that picks users most likely to engage with mobile push notifications.",tags:["Vertex AI","Batch scoring","Deployment"],g:["#ff6b4a","#ffb340"],m:"Live",ms:"in production"},
+ {f:"mlops",k:"MLOps · Reliability",t:"Returns KWA batch fix",d:"Batch prediction outputs came back out of order, so merged results no longer matched their inputs. Found the cause and fixed the merge.",tags:["Batch prediction","Debugging","BigQuery"],g:["#0d1324","#2547f5"],m:"Fixed",ms:"ordering bug"},
+ {f:"nlp",k:"NLP",t:"Course skills tagging",d:"A model that reads course descriptions and tags the skills they teach. The challenge was training one model across a very large label space.",tags:["NLP","Multi-label","Classification"],g:["#14b8a6","#2547f5"],m:"700+",ms:"skill labels"},
+ {f:"cv",k:"Computer vision",t:"Real-time face anti-spoofing",d:"Created a live and replay video dataset, then trained several CNNs with texture analysis to separate real faces from screen replays in real time.",tags:["CNN","Texture analysis","Dataset"],g:["#ff6b4a","#e0115f"],m:"98%",ms:"accuracy"},
+ {f:"cv",k:"Computer vision",t:"Document forgery detection",d:"Combined copy-move detection, splicing detection and a deep learning texture model to flag tampered documents.",tags:["Image forensics","Deep learning","Document AI"],g:["#2547f5","#14b8a6"],m:"3",ms:"detection methods"}
 ];
-const skills=[
- ["Cloud and platform",["Google Cloud (GCP)","Vertex AI","BigQuery","Deployment pipelines"]],
- ["MLOps",["Pipeline orchestration","Model deployment","Batch prediction","Production support"]],
- ["Modelling",["GenAI and LLMs","NLP","Computer vision","Deep learning"]],
- ["Earlier domains",["Document intelligence","AML screening","Process automation","Image forensics"]]
+const S=[
+ ["Cloud",["Google Cloud","Vertex AI","BigQuery","Cloud Storage"]],
+ ["MLOps",["Pipelines","Model deployment","Batch prediction","Monitoring","Production support"]],
+ ["AI and ML",["GenAI","LLMs","NLP","Computer vision","Deep learning"]],
+ ["Domains",["Document intelligence","AML screening","Process automation","Image forensics"]]
 ];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-document.getElementById("proj").innerHTML=projects.map(p=>`<li><span class="k">${esc(p.k)}</span><h3>${esc(p.t)}</h3>${p.m?`<div class="m"><b>${esc(p.m[0])}</b><span>${esc(p.m[1])}</span></div>`:""}<p>${esc(p.d)}</p><div class="tags">${p.tags.map(x=>`<span>${esc(x)}</span>`).join("")}</div></li>`).join("");
-document.getElementById("sk").innerHTML=skills.map(([h,l])=>`<div><h3>${esc(h)}</h3><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
-
-const stages=[["Ingest","BigQuery, GCS"],["Preprocess","features"],["Train","Vertex AI"],["Evaluate","gates"],["Deploy","endpoint, batch"],["Monitor","drift, support"]];
-const box=document.getElementById("pipe"),s=document.getElementById("pipeSvg");
-const draw=()=>{
- const W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
- const vert=W<600,n=stages.length;let pts=[],path="",loop="";
- const r=vert?22:Math.min(30,W/40);
- if(!vert){
-  const m=r+40,y=H*0.42,step=(W-2*m)/(n-1);
-  pts=stages.map((_,i)=>[m+i*step,y]);
-  path=`M${pts[0][0]} ${y} H${pts[n-1][0]}`;
-  const ly=H-22;
-  loop=`M${pts[n-1][0]} ${y+r} V${ly-14} Q${pts[n-1][0]} ${ly} ${pts[n-1][0]-14} ${ly} H${pts[0][0]+14} Q${pts[0][0]} ${ly} ${pts[0][0]} ${ly-14} V${y+r}`;
- }else{
-  const x=48,m=r+16,step=(H-2*m)/(n-1);
-  pts=stages.map((_,i)=>[x,m+i*step]);
-  path=`M${x} ${pts[0][1]} V${pts[n-1][1]}`;
-  const lx=16;
-  loop=`M${x-r} ${pts[n-1][1]} H${lx+10} Q${lx} ${pts[n-1][1]} ${lx} ${pts[n-1][1]-10} V${pts[0][1]+10} Q${lx} ${pts[0][1]} ${lx+10} ${pts[0][1]} H${x-r}`;
- }
- const nodes=pts.map(([x,y],i)=>{
-  const [a,b]=stages[i],hot=i===4;
-  const lab=vert?`<text x="${x+r+16}" y="${y-2}" class="t1">${a}</text><text x="${x+r+16}" y="${y+18}" class="t2">${b}</text>`
-   :`<text x="${x}" y="${y+r+28}" text-anchor="middle" class="t1">${a}</text><text x="${x}" y="${y+r+48}" text-anchor="middle" class="t2">${b}</text>`;
-  return `<g><circle cx="${x}" cy="${y+4}" r="${r}" fill="#000" opacity=".25"/><circle cx="${x}" cy="${y}" r="${r}" fill="${hot?"#e0115f":"#132a63"}" stroke="${hot?"#ff6a9d":"#3a5bb0"}" stroke-width="2"/><circle cx="${x}" cy="${y}" r="${r*0.32}" fill="#fff" opacity="${hot?1:.85}"/>${lab}</g>`;
- }).join("");
- const loopLab=vert?"":`<text x="${(pts[0][0]+pts[n-1][0])/2}" y="${H-28}" text-anchor="middle" class="t2">retrain on new data and monitoring signals</text>`;
- s.innerHTML=`<style>.t1{font:700 ${vert?17:16}px 'Red Hat Display',sans-serif;fill:#fff}.t2{font:400 14px 'Red Hat Text',sans-serif;fill:#b9c4e0}text{paint-order:stroke;stroke:#0b1f4b;stroke-width:4px}</style>
- <path d="${loop}" fill="none" stroke="#3a5bb0" stroke-width="2" stroke-dasharray="6 7"/>
- ${loopLab}
- <path d="${path}" fill="none" stroke="#2a4488" stroke-width="${vert?6:8}" stroke-linecap="round"/>
- <path id="live" d="${path}" fill="none" stroke="#e0115f" stroke-width="${vert?6:8}" stroke-linecap="round" stroke-dasharray="1 9999"/>
- ${nodes}
- <circle class="run" r="7" fill="#fff" stroke="#e0115f" stroke-width="3"><animateMotion dur="6s" repeatCount="indefinite" path="${path}"/></circle>`;
-};
-const ro=new ResizeObserver(draw);ro.observe(box);
+const art=(g,i)=>{let s=i*977+13,r=()=>(s=s*16807%2147483647)/2147483647,dots="";
+ for(let n=0;n<14;n++)dots+=`<circle cx="${(r()*400).toFixed(0)}" cy="${(r()*150).toFixed(0)}" r="${(2+r()*5).toFixed(1)}" fill="#fff" opacity="${(.15+r()*.35).toFixed(2)}"/>`;
+ return `<svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${g[0]}"/><stop offset="1" stop-color="${g[1]}"/></linearGradient></defs><rect width="400" height="150" fill="url(#g${i})"/><circle cx="340" cy="20" r="90" fill="#fff" opacity=".08"/><circle cx="380" cy="130" r="60" fill="#fff" opacity=".07"/><path d="M0 120 C80 90 140 140 220 105 S340 70 400 95 V150 H0Z" fill="#000" opacity=".12"/>${dots}</svg>`};
+const pg=document.getElementById("pg");
+pg.innerHTML=P.map((p,i)=>`<article class="pj" data-f="${p.f}"><div class="th">${art(p.g,i)}<div class="m">${esc(p.m)}<small>${esc(p.ms)}</small></div></div><div class="pb"><span class="k">${esc(p.k)}</span><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="tg">${p.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div></div></article>`).join("");
+document.getElementById("sk").innerHTML=S.map(([h,l])=>`<div><h3>${esc(h)}</h3><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+const btns=document.querySelectorAll(".flt button");
+btns.forEach(b=>b.addEventListener("click",()=>{
+ const f=b.dataset.f;
+ btns.forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+ pg.querySelectorAll(".pj").forEach(c=>{c.hidden=!(f==="all"||c.dataset.f===f)});
+}));
 }
 </script>
 </body>
