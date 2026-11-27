@@ -87,20 +87,21 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px
 .who p{color:var(--soft);font-size:15px}
 .loc{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--soft)}
 .loc b{color:var(--ink);font-weight:600}
-.run{margin-top:20px;background:var(--deep);color:#e6e9f5;border-radius:18px;padding:18px 20px}
-.run .rh{display:flex;justify-content:space-between;font-size:13px;color:#8d97b5;margin-bottom:12px;gap:8px}
-.run .rh b{color:#4ade80;font-weight:600}
-.step{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;font-size:14.5px}
-.step i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;background:#1f8f4e;color:#fff}
-.step.now i{background:var(--coral);animation:pulse 1.6s infinite}
-.step span:last-child{color:#8d97b5;font-size:13px;white-space:nowrap}
-.bar{height:6px;border-radius:6px;background:#232b45;margin-top:12px;overflow:hidden}
-.bar div{height:100%;width:84%;background:linear-gradient(90deg,var(--blue),var(--coral));border-radius:6px}
+.facts{margin:20px 0 0;display:grid;gap:0}
+.facts div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts div:last-child{border-bottom:0}
+.facts dt{color:var(--soft)}
+.facts dd{margin:0;font-weight:600}
+.focus{margin-top:16px;background:var(--deep);border-radius:18px;padding:18px 20px;color:#fff}
+.focus p{font-size:13px;color:#8d97b5;margin-bottom:12px}
+.focus ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.focus li{font-size:14px;font-weight:600;padding:7px 12px;border-radius:10px;background:#1b2340;border:1px solid #2a3458}
+.focus li:nth-child(odd){color:#9fb0ff}
+.focus li:nth-child(even){color:#ffa58f}
 .chip{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;box-shadow:0 14px 30px -14px rgba(13,19,36,.35);display:flex;gap:8px;align-items:center;white-space:nowrap}
 .chip em{font-style:normal;color:var(--coral);font:700 18px "Space Grotesk",sans-serif}
 .c1{top:-18px;right:24px}
 .c2{bottom:-20px;left:-18px}
-@keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--coral) 30%,transparent)}}
 
 .stats{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(56px,6vw,80px)}
 .stats>div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px}
@@ -241,33 +242,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         </div>
       </div>
 
-      <div class="pc" aria-label="Profile summary">
-        <div class="chip c1"><em>98%</em>anti-spoofing accuracy</div>
+      <div class="pc" aria-label="Noor at a glance">
         <div class="who">
           <div class="av" aria-hidden="true">N</div>
           <div><h3>Noor</h3><p>Senior AI Engineer · MLOps</p></div>
         </div>
-        <div class="loc">
-          <span><b>Best Buy</b> India</span>
-          <span><b>GCP</b> Vertex AI · BigQuery</span>
+        <dl class="facts">
+          <div><dt>Currently</dt><dd>Senior AI Engineer, Best Buy India</dd></div>
+          <div><dt>Experience</dt><dd>7+ years in AI, ML and cloud</dd></div>
+          <div><dt>Specialty</dt><dd>Production ML and MLOps</dd></div>
+          <div><dt>Cloud</dt><dd>Google Cloud · Vertex AI · BigQuery</dd></div>
+          <div><dt>Based in</dt><dd>India</dd></div>
+        </dl>
+        <div class="focus">
+          <p>What I work on</p>
+          <ul><li>MLOps</li><li>GenAI and LLMs</li><li>NLP</li><li>Computer vision</li><li>Model deployment</li><li>ML pipelines</li></ul>
         </div>
-        <div class="run" aria-label="Example pipeline run">
-          <div class="rh"><span>vertex-pipeline · run #482</span><b>● healthy</b></div>
-          <div class="step"><i>✓</i><span>Ingest from BigQuery</span><span>1m 12s</span></div>
-          <div class="step"><i>✓</i><span>Preprocess features</span><span>3m 40s</span></div>
-          <div class="step"><i>✓</i><span>Batch prediction</span><span>6m 05s</span></div>
-          <div class="step now"><i>›</i><span>Deploy and monitor</span><span>running</span></div>
-          <div class="bar"><div></div></div>
-        </div>
-        <div class="chip c2"><em>700+</em>skill labels in one model</div>
+        <div class="chip c2"><em>▶</em>Creator, The AI &amp; Systems Lab HQ</div>
       </div>
     </div>
 
     <div class="stats">
-      <div><b>7+</b><span>years in AI, ML and cloud</span></div>
-      <div><b>700+</b><span>skills tagged by one NLP model</span></div>
-      <div><b>98%</b><span>accuracy, face anti-spoofing</span></div>
-      <div><b>2+</b><span>Vertex AI pipelines in production</span></div>
+      <div><b>7+</b><span>years of experience in AI, ML and cloud</span></div>
+      <div><b>6+</b><span>ML systems built, from models to production pipelines</span></div>
+      <div><b>4</b><span>areas: MLOps, GenAI, NLP and computer vision</span></div>
+      <div><b>GCP</b><span>primary cloud: Vertex AI and BigQuery</span></div>
     </div>
   </div>
 </header>
